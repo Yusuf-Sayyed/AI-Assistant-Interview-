@@ -8,15 +8,8 @@ dotenv.config();
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-
-const allowedOrigins = [
-  'https://ai-interviewer-hr.vercel.app', // Your production frontend
-  'http://localhost:5173',                 // Your local frontend
-];
-
-
 const corsOptions = {
-  origin: allowedOrigins,
+  origin: 'https://ai-interviewer-hr.vercel.app/',
 };
 app.use(cors(corsOptions));
 
