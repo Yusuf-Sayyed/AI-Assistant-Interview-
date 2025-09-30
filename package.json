@@ -1,57 +1,47 @@
 {
-    "name": "swipe-ai",
-    "version": "1.0.0",
-    "private": true,
-    "scripts": {
-        "build": "cd frontend && vite build",
-        "dev": "concurrently \"vite frontend\" \"nodemon api/index.ts\"",
-        "install": "concurrently \"cd api && npm install\" \"cd frontend && npm install\""
-    },
-    "devDependencies": {
-        "@types/node": "^24.6.0",
-        "concurrently": "^8.2.2"
-    },
-    "description": "",
-    "main": "index.js",
-    "dependencies": {
-        "ansi-regex": "^5.0.1",
-        "ansi-styles": "^4.3.0",
-        "chalk": "^4.1.2",
-        "cliui": "^8.0.1",
-        "color-convert": "^2.0.1",
-        "color-name": "^1.1.4",
-        "date-fns": "^2.30.0",
-        "emoji-regex": "^8.0.0",
-        "escalade": "^3.2.0",
-        "get-caller-file": "^2.0.5",
-        "has-flag": "^4.0.0",
-        "is-fullwidth-code-point": "^3.0.0",
-        "lodash": "^4.17.21",
-        "require-directory": "^2.1.1",
-        "rxjs": "^7.8.2",
-        "shell-quote": "^1.8.3",
-        "spawn-command": "^0.0.2",
-        "string-width": "^4.2.3",
-        "strip-ansi": "^6.0.1",
-        "supports-color": "^8.1.1",
-        "tree-kill": "^1.2.2",
-        "tslib": "^2.8.1",
-        "uuid": "^13.0.0",
-        "wrap-ansi": "^7.0.0",
-        "y18n": "^5.0.8",
-        "yargs": "^17.7.2",
-        "yargs-parser": "^21.1.1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Yusuf-Sayyed/AI-Assistant-Interview-.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "type": "commonjs",
-    "bugs": {
-        "url": "https://github.com/Yusuf-Sayyed/AI-Assistant-Interview-/issues"
-    },
-    "homepage": "https://github.com/Yusuf-Sayyed/AI-Assistant-Interview-#readme"
+  "name": "ai-interview-assistant",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AI-powered interview assistant for Swipe.",
+  "main": "api/index.js",
+  "type": "module",
+  "scripts": {
+    "dev:frontend": "vite frontend",
+    "dev:backend": "nodemon api/index.ts",
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
+    "build": "vite build frontend",
+    "start": "node api/index.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.11.3",
+    "@reduxjs/toolkit": "^2.2.5",
+    "antd": "^5.18.3",
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "localforage": "^1.10.0",
+    "mammoth": "^1.7.2",
+    "openai": "^4.52.0",
+    "pdfjs-dist": "^4.3.136",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "redux-persist": "^6.0.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^9.0.8",
+    "@vitejs/plugin-react": "^4.3.0",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.13"
+  }
 }

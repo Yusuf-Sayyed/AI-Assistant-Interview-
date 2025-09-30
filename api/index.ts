@@ -5,10 +5,18 @@ import OpenAI from "openai";
 
 dotenv.config();
 
+const PORT = process.env.PORT || 3001;
 const app = express();
 
+
+const allowedOrigins = [
+  'https://ai-interviewer-hr.vercel.app', // Your production frontend
+  'http://localhost:5173',                 // Your local frontend
+];
+
+
 const corsOptions = {
-  origin: 'https://swipe-assignment-omega.vercel.app',
+  origin: allowedOrigins,
 };
 app.use(cors(corsOptions));
 
@@ -116,6 +124,11 @@ app.post("/api/finalize", async (req: Request, res: Response) => {
         console.error("Error in /finalize:", error);
         res.status(500).json({ error: "Failed to finalize interview" });
     }
+});
+
+
+app.listen(PORT, () => {
+  console.log(`✅ TypeScript Backend server is running on http://localhost:${PORT}`);
 });
 
 // Export the app for Vercel
