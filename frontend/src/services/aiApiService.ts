@@ -2,11 +2,14 @@ import axios from 'axios';
 import type { Difficulty } from '../types';
 import type { Question } from '../types';
 
+// Determine the base URL for the API depending on the environment
+const baseURL =
+  import.meta.env.MODE === 'production'
+    ? '/api'
+    : 'http://localhost:3001/api';
 
 // Create an Axios instance configured to talk to our backend
-const apiClient = axios.create({
-  baseURL: 'http://localhost:3001/api',
-});
+const apiClient = axios.create({ baseURL });
 
 // Define the function that calls our /generate-question endpoint
 export const generateQuestion = async (
