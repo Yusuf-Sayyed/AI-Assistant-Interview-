@@ -1,73 +1,115 @@
-# React + TypeScript + Vite
+# AI-Powered Interview Assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An intelligent interview system that conducts and evaluates technical interviews for full-stack developers, powered by OpenRouter's DeepSeek AI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- AI-driven interview process
+- Resume parsing (PDF/DOCX)
+- Timed technical questions
+- Real-time evaluation
+- Local progress persistence
+- Interviewer dashboard
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js (v16 or higher)
+- npm or yarn
+- OpenRouter API key ([Get it here](https://openrouter.ai/))
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd swipe-assignment
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install backend dependencies:
+```bash
+cd backend
+npm install
 ```
+
+3. Install frontend dependencies:
+```bash
+cd ../frontend
+npm install
+```
+
+4. Create `.env` file in the backend directory:
+```bash
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+```
+
+Note: Make sure to use the "DeepSeek: R1 0528" model from OpenRouter (free tier)
+
+## Running the Application
+
+1. Start the backend server:
+```bash
+cd backend
+npm start
+```
+The server will run on http://localhost:3001
+
+2. Start the frontend development server:
+```bash
+cd frontend
+npm run dev
+```
+The application will be available at http://localhost:5173
+
+## Project Structure
+
+```
+├── backend/                # Express + TypeScript backend
+│   ├── index.ts           # Server entry point
+│   └── .env              # Environment variables
+└── frontend/             # React + TypeScript frontend
+    ├── src/
+    │   ├── components/   # Reusable components
+    │   ├── features/     # Redux slices
+    │   ├── pages/        # Main page components
+    │   ├── services/     # API services
+    │   └── types/        # TypeScript definitions
+    └── package.json
+```
+
+## Tech Stack
+
+- Frontend:
+  - React
+  - TypeScript
+  - Redux Toolkit
+  - Ant Design
+  - Vite
+
+- Backend:
+  - Node.js
+  - Express
+  - TypeScript
+  - OpenRouter AI
+
+## Environment Variables
+
+Backend `.env` configuration:
+```
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+```
+
+## Interview Process
+
+1. Upload resume or fill in details
+2. Answer 6 technical questions:
+   - 2 Easy (20s each)
+   - 2 Medium (60s each)
+   - 2 Hard (120s each)
+3. Receive AI evaluation and feedback
+
+## Development Notes
+
+- Uses OpenRouter's DeepSeek model for AI interactions
+- Questions are dynamically generated based on difficulty
+- Answers are evaluated in real-time
+- Progress is automatically saved locally#
